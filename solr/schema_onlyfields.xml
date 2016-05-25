@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="gitrepo">
+	<!-- add 3 fields -->
+	<field name="gitrepo_url" type="text" indexed="true" stored="true"/>
+	<field name="gitrepo_path" type="text" indexed="true" stored="true"/>
+	<field name="gitrepo_other" type="text" indexed="true" stored="true"/>
+</schema>

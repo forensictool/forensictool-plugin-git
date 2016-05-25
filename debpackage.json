@@ -1,0 +1,17 @@
+{
+    "name": "libcoex-plugin-task-searchgitrepo0",
+    "lib": "libcoex-plugin-task-searchgitrepo.so",
+    "project": "coex-plugin-task-searchgitrepo.pro",
+    "description": "Plugin search git repo in system",
+    "repository": "https://github.com/tusur-coex/coex-plugin-task-searchgitrepo.git",
+    "version": {
+		"major": "0",
+		"minor": "1",
+		"build": "5"
+	},
+    "maintainer": {
+		"name": "Evgenii Sopov",
+		"email": "mrseakg@gmail.com"
+	},
+	"architecture": "amd64"
+}
