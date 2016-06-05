@@ -11,6 +11,7 @@ void printHelp(QStringList &args){
 	std::cout << "    --output-folder <fullpath>      - required parameter\n";
 	std::cout << "    --help                          - this help\n";
 	std::cout << "\n";
+	std::cout << "  Version: " << VERSION_MAJOR << "." << VERSION_MINOR << "." << VERSION_BUILD << "\n";
 	std::cout << "  Author: " << pTask->author().toStdString() << "\n\n";
 	// std::cout << "  LICENSE: " << pTask->license().toStdString() << "\n";
 }

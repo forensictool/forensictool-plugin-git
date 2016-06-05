@@ -45,8 +45,7 @@ void TaskSearchGitRepository::processGitFolder(QString gitfolder)
 		QString path = QFileInfo(gitfolder + "/..").absoluteFilePath();
 		QString id = "gitrepo_" + QCryptographicHash::hash(path.toUtf8(), QCryptographicHash::Md5).toHex();
 		QString url = "";
-		if(m_bDebug)
-			std::cout << path.toStdString() << "\n";
+		
 		QSettings *pSettings = new QSettings(gitconfig,QSettings::IniFormat);
 		QStringList groups = pSettings->childGroups();
 		
@@ -59,6 +58,9 @@ void TaskSearchGitRepository::processGitFolder(QString gitfolder)
 					url += ", " + pSettings->value(key).toString();
 			}
 		}
+		if(m_bDebug)
+			std::cout << path.toStdString() << " => " << url.toStdString() << "\n";
+
 		m_pWriter->writeStartElement("doc");
 		writeField("id", id);
 		writeField("application", "Git");
