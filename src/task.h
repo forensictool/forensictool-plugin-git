@@ -1,7 +1,7 @@
 #ifndef __TASK_SEARCH_GIT_REPOSITORY_H__
 #define __TASK_SEARCH_GIT_REPOSITORY_H__
 
-#include "coex.h"
+#include "coex/coex.h"
 
 #include <QCryptographicHash>
 #include <QDateTime>
