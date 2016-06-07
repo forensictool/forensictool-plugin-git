@@ -17,11 +17,11 @@ GitSearchRepoWindow::GitSearchRepoWindow(){
     m_pTask = (coex::ITask*)(new TaskSearchGitRepository());
 
     setWindowTitle(m_pTask->name());
-    setMinimumSize(1000, 600);
-
+    // setMinimumSize(1000, 600);
+	setWindowIcon(QIcon(":/images/logo_70x70.png"));
     initWidgets();
 	
-
+// QSizePolicy::Expanding
 
     // btnGenerateSignal();
 	// m_pThread = new HandSearchThread();
@@ -34,16 +34,22 @@ GitSearchRepoWindow::GitSearchRepoWindow(){
 void GitSearchRepoWindow::initWidgets(){
     // Main Layout
     m_pMainLayout = new QVBoxLayout();
-
+	m_pMainLayout->setContentsMargins(10,10,10,10);
     // Top panel with info
     {
-        QHBoxLayout *pLayouts = new QHBoxLayout();
+        QHBoxLayout *pLayout = new QHBoxLayout();
+
+		// QImage *pImage = new QImage(":/images/logo_70x70.png");
 
         // TODO: logo
-        QLabel *pLabel1 = new QLabel("LOGO");
+        QLabel *pLabel1 = new QLabel();
         pLabel1->setFixedWidth(70);
         pLabel1->setFixedHeight(70);
-        pLayouts->addWidget(pLabel1);
+        
+        // QPixmap pix(":/images/logo_70x70.png");
+		pLabel1->setStyleSheet("background-image: url(:/images/logo_70x70.png);");
+		// pLabel1->setPixmap(pix);
+        pLayout->addWidget(pLabel1);
 
         // Author & Version
         QString version = QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + "." + QString::number(VERSION_BUILD);
@@ -53,16 +59,84 @@ void GitSearchRepoWindow::initWidgets(){
         text += "Version: " + version + "\n";
 
         QLabel *pLabel2 = new QLabel(text);
-        pLayouts->addWidget(pLabel2);
-
-
+        pLayout->addWidget(pLabel2);
+		
+		pLayout->setSpacing(10);
+		pLayout->setContentsMargins(0,0,0,0);
         QWidget *pWidget = new QWidget();
-        pWidget->setFixedHeight(70);
-        pWidget->setLayout(pLayouts);
+        pWidget->setLayout(pLayout);
         m_pMainLayout->addWidget(pWidget);
     }
+    
+    // input folder
+    {
+		QHBoxLayout *pLayout = new QHBoxLayout();
+		
+		QLabel *pLabel = new QLabel("Input folder: ");
+		pLayout->addWidget(pLabel);
+		
+		QLineEdit *pLineEdit = new QLineEdit();
+		pLineEdit->setReadOnly(true);
+		pLayout->addWidget(pLineEdit);
+		
+		QPushButton *pPushButton = new QPushButton("Select...");
+		pLayout->addWidget(pPushButton);
+		
+		pLayout->setSpacing(0);
+		pLayout->setContentsMargins(0,0,0,0);
+		QWidget *pWidget = new QWidget();
+        pWidget->setLayout(pLayout);
+        m_pMainLayout->addWidget(pWidget);
+	}
+	
+	// ouput folder
+    {
+		QHBoxLayout *pLayout = new QHBoxLayout();
+		
+		QLabel *pLabel = new QLabel("Output folder: ");
+		pLayout->addWidget(pLabel);
+		
+		QLineEdit *pLineEdit = new QLineEdit();
+		pLineEdit->setReadOnly(true);
+		pLayout->addWidget(pLineEdit);
+		
+		QPushButton *pPushButton = new QPushButton("Select...");
+		pLayout->addWidget(pPushButton);
+		
+		pLayout->setSpacing(0);
+		pLayout->setContentsMargins(0,0,0,0);
+		QWidget *pWidget = new QWidget();
+        pWidget->setLayout(pLayout);
+        m_pMainLayout->addWidget(pWidget);
+	}
+	
+	// manage panel
+    {
+		QHBoxLayout *pLayout = new QHBoxLayout();
 
-    initEditor();
+		QPushButton *pPushButton = new QPushButton("Run");
+		pLayout->addWidget(pPushButton);
+		
+		/*QLabel *pLabel = new QLabel("Search: ");
+		pLayout->addWidget(pLabel);
+		
+		QLineEdit *pLineEdit = new QLineEdit();
+		pLineEdit->setReadOnly(true);
+		pLayout->addWidget(pLineEdit);
+		
+		QPushButton *pPushButton1 = new QPushButton("Search");
+		pLayout->addWidget(pPushButton1);*/
+		
+		QWidget *pWidget = new QWidget();
+        pWidget->setLayout(pLayout);
+        m_pMainLayout->addWidget(pWidget);
+	}
+	
+	// table
+	{
+		QTableView* pTableView = new QTableView();
+        m_pMainLayout->addWidget(pTableView);
+	}
 
     QWidget *pWidget = new QWidget();
     pWidget->setLayout(m_pMainLayout);
@@ -71,64 +145,7 @@ void GitSearchRepoWindow::initWidgets(){
 
 // ---------------------------------------------------------------------
 
-void GitSearchRepoWindow::initEditor(){
-	QVBoxLayout *pLayouts;
-	pLayouts = new QVBoxLayout();
-	QLabel *pLabel1 = new QLabel("FFT");
-	pLabel1->setFixedHeight(25);
-	m_pTextEdit = new QTextEdit();
-	m_pTextEdit->setText("# like this: K*sin(W*t)\n-1.0*sin(3.14*t-1.8)\n10*cos(3.14*t+0.1)");
-	loadFromFile();
-	m_pTextEditLog = new QTextEdit();
-	m_pTextEditLog->setText("Started...");
-	m_pTextEditLog->setReadOnly(true);
-	m_pBtnGenerate = new QPushButton("Generate");
-	connect(m_pBtnGenerate, SIGNAL(clicked()), this, SLOT(btnGenerateSignal()));
-	m_pBtnRunGeneticAlg = new QPushButton("Run Genetic Algorithm");
-	connect(m_pBtnRunGeneticAlg, SIGNAL(clicked()), this, SLOT(btnRunGeneticAlgorithm()));
-
-	pLayouts->addWidget(pLabel1);
-	pLayouts->addWidget(m_pTextEdit);
-	pLayouts->addWidget(m_pTextEditLog);
-	pLayouts->addWidget(m_pBtnGenerate);
-	pLayouts->addWidget(m_pBtnRunGeneticAlg);
-	
-	QWidget *pWidget = new QWidget();
-	pWidget->setFixedWidth(250);
-	pWidget->setLayout(pLayouts);
-	m_pMainLayout->addWidget(pWidget);
-}
-
-// ---------------------------------------------------------------------
-
-void GitSearchRepoWindow::btnRunGeneticAlgorithm() {
-	/*if(m_pThread->isRunning()){
-		m_pThread->terminate();
-		m_pBtnGenerate->setEnabled(true);
-		m_pBtnRunGeneticAlg->setText("Run Genetic Algorithm");
-		m_pTextEdit->setReadOnly(false);
-	}else{
-		m_pTextEdit->setReadOnly(true);
-		m_pBtnGenerate->setEnabled(false);
-		m_pBtnRunGeneticAlg->setText("Stop Genetic Algorithm");
-		
-		m_pTextEditLog->setText("");
-		m_pTextEditLog->append("Run Genetic Algorithm...");
-		m_pTextEditLog->append("Previous MiddleDiff: " + QString::number(m_nMiddleDiff));
-	
-		QString sLines = m_pTextEdit->toPlainText();
-		QStringList lines = sLines.split("\n");
-		QVector<KFW> vKFW;
-		parseFuncs(lines, vKFW);
-		m_pThread->setKFW(vKFW);
-		m_pThread->setOriginalSignal(m_vOriginalSignal);
-		m_pThread->start();
-	}*/
-}
-
-// ---------------------------------------------------------------------
-
-void GitSearchRepoWindow::btnGenerateSignal() {
+void GitSearchRepoWindow::btnStart() {
 	/*QString sLines = m_pTextEdit->toPlainText();
 	QStringList lines = sLines.split("\n");
 	QVector<KFW> vKFW;

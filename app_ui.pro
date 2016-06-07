@@ -6,6 +6,8 @@ DESTDIR = bin/
 OBJECTS_DIR = tmp/
 QT += gui core widgets xml printsupport
 
+RESOURCES = images.qrc
+
 SOURCES += \
 	src/app_ui.cpp \
 	src/task.cpp \

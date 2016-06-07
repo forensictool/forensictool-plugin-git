@@ -43,7 +43,6 @@ class GitSearchRepoWindow : public QMainWindow
 		QVector<double> m_vX;
 
         void initWidgets();
-		void initEditor();
 		void loadFromFile();
 		void saveToFile();
 	public:
@@ -56,8 +55,7 @@ class GitSearchRepoWindow : public QMainWindow
 		void onUpdateKFW(QString kfwlist);
 
 	private slots:
-		void btnGenerateSignal();
-		void btnRunGeneticAlgorithm();
+		void btnStart();
 };
 
 class GitSearchRepoWindowThread : public QThread
