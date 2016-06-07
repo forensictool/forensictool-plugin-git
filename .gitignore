@@ -32,3 +32,5 @@ bin/*
 dist/*
 test.sh
 results/
+
+app_ui.pro.user

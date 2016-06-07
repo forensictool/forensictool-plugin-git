@@ -11,23 +11,62 @@
 #include <QFileDialog>
 #include <QRegExp>
 #include <QPen>
+#include "../task.h"
 
 GitSearchRepoWindow::GitSearchRepoWindow(){
-	setWindowTitle("Git Search Repo");
+    m_pTask = (coex::ITask*)(new TaskSearchGitRepository());
+
+    setWindowTitle(m_pTask->name());
     setMinimumSize(1000, 600);
 
-	// Main Layout
-	m_pMainLayout = new QHBoxLayout();
-	initEditor();
-
-	QWidget *pWidget = new QWidget();
-	pWidget->setLayout(m_pMainLayout);
-	setCentralWidget(pWidget);
+    initWidgets();
 	
-	btnGenerateSignal();
+
+
+    // btnGenerateSignal();
 	// m_pThread = new HandSearchThread();
 	// connect(m_pThread, SIGNAL(updateKFW(QString)), SLOT(onUpdateKFW(QString)));
                           
+}
+
+// ---------------------------------------------------------------------
+
+void GitSearchRepoWindow::initWidgets(){
+    // Main Layout
+    m_pMainLayout = new QVBoxLayout();
+
+    // Top panel with info
+    {
+        QHBoxLayout *pLayouts = new QHBoxLayout();
+
+        // TODO: logo
+        QLabel *pLabel1 = new QLabel("LOGO");
+        pLabel1->setFixedWidth(70);
+        pLabel1->setFixedHeight(70);
+        pLayouts->addWidget(pLabel1);
+
+        // Author & Version
+        QString version = QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + "." + QString::number(VERSION_BUILD);
+        QString text = "";
+        text += "Description: " + m_pTask->description() + "\n";
+        text += "Author: " + m_pTask->author() + "\n";
+        text += "Version: " + version + "\n";
+
+        QLabel *pLabel2 = new QLabel(text);
+        pLayouts->addWidget(pLabel2);
+
+
+        QWidget *pWidget = new QWidget();
+        pWidget->setFixedHeight(70);
+        pWidget->setLayout(pLayouts);
+        m_pMainLayout->addWidget(pWidget);
+    }
+
+    initEditor();
+
+    QWidget *pWidget = new QWidget();
+    pWidget->setLayout(m_pMainLayout);
+    setCentralWidget(pWidget);
 }
 
 // ---------------------------------------------------------------------

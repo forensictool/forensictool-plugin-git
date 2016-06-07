@@ -17,6 +17,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QComboBox>
+#include "../coex/coex.h"
 
 class GitSearchRepoWindowThread;
 
@@ -26,13 +27,14 @@ class GitSearchRepoWindow : public QMainWindow
 		Q_OBJECT
 	private:
 
-		QHBoxLayout *m_pMainLayout;
+        QVBoxLayout *m_pMainLayout;
 		QTextEdit *m_pTextEdit;
 		QTextEdit *m_pTextEditLog;
 		QPushButton *m_pBtnRunGeneticAlg;
 		QPushButton *m_pBtnGenerate;
 		GitSearchRepoWindowThread *m_pThread;
-		
+        coex::ITask* m_pTask;
+
 		int m_nSize;
 		double m_nMiddleDiff;
 		QVector<double> m_vOriginalSignal;
@@ -40,7 +42,7 @@ class GitSearchRepoWindow : public QMainWindow
 		QVector<double> m_vDiffSignal;
 		QVector<double> m_vX;
 
-	private:
+        void initWidgets();
 		void initEditor();
 		void loadFromFile();
 		void saveToFile();
