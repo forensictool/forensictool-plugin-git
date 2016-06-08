@@ -28,10 +28,9 @@ class GitSearchRepoWindow : public QMainWindow
 	private:
 
         QVBoxLayout *m_pMainLayout;
-		QTextEdit *m_pTextEdit;
-		QTextEdit *m_pTextEditLog;
-		QPushButton *m_pBtnRunGeneticAlg;
-		QPushButton *m_pBtnGenerate;
+        QLineEdit *m_pInputFolder;
+        QPushButton *m_pButtonStart;
+
 		GitSearchRepoWindowThread *m_pThread;
         coex::ITask* m_pTask;
 
@@ -43,8 +42,6 @@ class GitSearchRepoWindow : public QMainWindow
 		QVector<double> m_vX;
 
         void initWidgets();
-		void loadFromFile();
-		void saveToFile();
 	public:
 
 		GitSearchRepoWindow();
@@ -52,10 +49,10 @@ class GitSearchRepoWindow : public QMainWindow
 	signals:
 
 	public slots:
-		void onUpdateKFW(QString kfwlist);
 
 	private slots:
-		void btnStart();
+        void btnChooseInputFolder();
+        void btnStart();
 };
 
 class GitSearchRepoWindowThread : public QThread
@@ -63,11 +60,6 @@ class GitSearchRepoWindowThread : public QThread
 	private:
 		Q_OBJECT
 		GitSearchRepoWindow *m_pHandSearch;
-		QVector<double> m_vOriginalSignal;
-		double m_nMax;
-		double m_nMin;
-		int m_nHeightSignal;
-		int m_nWidthSignal;
 
 	public:
 		void setOriginalSignal(QVector<double> vOriginalSignal);

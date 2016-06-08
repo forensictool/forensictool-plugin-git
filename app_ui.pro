@@ -6,6 +6,8 @@ DESTDIR = bin/
 OBJECTS_DIR = tmp/
 QT += gui core widgets xml printsupport
 
+ICON = images/logo_70x70.icns
+
 RESOURCES = images.qrc
 
 SOURCES += \
