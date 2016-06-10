@@ -18,6 +18,7 @@
 #include <QLabel>
 #include <QComboBox>
 #include "../coex/coex.h"
+#include "tablemodel_gitrepos.h"
 
 class GitSearchRepoWindowThread;
 
@@ -33,13 +34,7 @@ class GitSearchRepoWindow : public QMainWindow
 
 		GitSearchRepoWindowThread *m_pThread;
         coex::ITask* m_pTask;
-
-		int m_nSize;
-		double m_nMiddleDiff;
-		QVector<double> m_vOriginalSignal;
-		QVector<double> m_vGeneratedSignal;
-		QVector<double> m_vDiffSignal;
-		QVector<double> m_vX;
+        TableModelGitRepos* m_pTableModel_GitRepos;
 
         void initWidgets();
 	public:

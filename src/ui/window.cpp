@@ -12,6 +12,7 @@
 #include <QRegExp>
 #include <QPen>
 #include <QDir>
+#include <QHeaderView>
 #include "../task.h"
 #include "../coex/config.h"
 #include "../coex/typeos.h"
@@ -125,6 +126,12 @@ void GitSearchRepoWindow::initWidgets(){
 	// table
 	{
 		QTableView* pTableView = new QTableView();
+        pTableView->setColumnWidth(0, 300);
+        pTableView->setColumnWidth(1, 400);
+        // pTableView->horizontalHeader()->sectionResizeMode(QHeaderView::Stretch);
+
+        m_pTableModel_GitRepos = new TableModelGitRepos();
+        pTableView->setModel( m_pTableModel_GitRepos );
         m_pMainLayout->addWidget(pTableView);
 	}
 

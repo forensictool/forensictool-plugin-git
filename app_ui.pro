@@ -16,10 +16,12 @@ SOURCES += \
 	src/coex/config.cpp \
 	src/coex/typeos.cpp \
 	src/ui/window.cpp \
+        src/ui/tablemodel_gitrepos.cpp
 
 HEADERS += \
 	src/coex/coex.h \
 	src/coex/config.h \
 	src/coex/typeos.h \
 	src/ui/window.h \
-	src/task.h
+        src/task.h \
+        src/ui/tablemodel_gitrepos.h
