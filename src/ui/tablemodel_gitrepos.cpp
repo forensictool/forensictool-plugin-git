@@ -1,4 +1,6 @@
 #include "tablemodel_gitrepos.h"
+#include <QDir>
+#include <QXmlStreamReader>
 
 TableModelGitRepos::TableModelGitRepos()
 {
@@ -60,3 +62,38 @@ QVariant TableModelGitRepos::headerData(int section, Qt::Orientation  orientatio
 void TableModelGitRepos::needReset() {
     emit layoutChanged();
 }
+
+// ---------------------------------------------------------------------
+
+void TableModelGitRepos::reloadDataFromXML(){
+    m_columnPath.clear();
+    m_columnUrl.clear();
+    QString outputDir = QDir::home().absolutePath() + "/coex.output";
+    QFile* file = new QFile(outputDir + "/gitrepos/gitrepos.xml");
+    if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        return;
+    }
+    QXmlStreamReader xml(file);
+    QString lastStartElement = "";
+    while (!xml.atEnd() && !xml.hasError())
+    {
+        QXmlStreamReader::TokenType token = xml.readNext();
+        if (xml.isStartElement()){
+            if (xml.name() == "field"){
+                QXmlStreamAttributes attributes = xml.attributes();
+                if (attributes.hasAttribute("name")){
+                    lastStartElement = attributes.value("name").toString();
+                    if(lastStartElement == "gitrepo_url")
+                        m_columnUrl << xml.readElementText();
+                    if(lastStartElement == "gitrepo_path")
+                        m_columnPath << xml.readElementText();
+                }else{
+                    lastStartElement = "";
+                }
+                continue;
+            }
+        }
+    }
+
+};

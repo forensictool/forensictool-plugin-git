@@ -172,6 +172,9 @@ void GitSearchRepoWindow::btnStart() {
     QStringList args;
     m_pTask->setOption(args);
     m_pTask->execute(pConfig);
+
+    m_pTableModel_GitRepos->reloadDataFromXML();
+    m_pTableModel_GitRepos->needReset();
 }
 
 // ---------------------------------------------------------------------
