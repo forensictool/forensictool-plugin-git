@@ -1,5 +1,5 @@
 {
-    "name": "libcoex-plugin-task-searchgitrepo0",
+    "name": "libcoex-plugin-task-searchgitrepo",
     "lib": "libcoex-plugin-task-searchgitrepo.so",
     "project": "coex-plugin-task-searchgitrepo.pro",
     "description": "Plugin search git repo in system",
