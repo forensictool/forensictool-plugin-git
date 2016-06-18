@@ -159,7 +159,7 @@ void GitSearchRepoWindow::btnChooseInputFolder(){
 void GitSearchRepoWindow::btnStart() {
 
     QString outputDir = QDir::home().absolutePath() + "/coex.output";
-    if(!QDir("Folder").exists()){
+    if(!QDir(outputDir).exists()){
         QDir().mkdir(outputDir);
     }
 

@@ -1,17 +1,28 @@
 {
-    "name": "libcoex-plugin-task-searchgitrepo",
-    "lib": "libcoex-plugin-task-searchgitrepo.so",
-    "project": "coex-plugin-task-searchgitrepo.pro",
-    "description": "Plugin search git repo in system",
-    "repository": "https://github.com/tusur-coex/coex-plugin-task-searchgitrepo.git",
-    "version": {
-		"major": "0",
-		"minor": "1",
-		"build": "5"
-	},
-    "maintainer": {
+	"repository": "https://github.com/tusur-coex/coex-plugin-task-searchgitrepo.git",
+	"maintainer": {
 		"name": "Evgenii Sopov",
 		"email": "mrseakg@gmail.com"
 	},
-	"architecture": "amd64"
+	"build" : [
+		{
+			"type": "lib",
+			"name": "libcoex-plugin-task-searchgitrepo",
+			"project": "lib.pro",
+			"lib": "libcoex-plugin-task-searchgitrepo.so",
+			"description": "Plugin search git repo in system",
+		},
+		{
+			"type": "app",
+			"name": "coex-searchgitrepo",
+			"project": "app.pro",
+			"description": "The Application search git repo in system",
+		},
+		{
+			"type": "app-ui",
+			"name": "coex-searchgitrepo-ui",
+			"project": "app_ui.pro",
+			"description": "The Application search git repo in system with UI",
+		},
+	]
 }
