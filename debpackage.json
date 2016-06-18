@@ -23,6 +23,6 @@
 			"name": "coex-searchgitrepo-ui",
 			"project": "app_ui.pro",
 			"description": "The Application search git repo in system with UI"
-		},
+		}
 	]
 }
