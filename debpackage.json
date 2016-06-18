@@ -10,19 +10,19 @@
 			"name": "libcoex-plugin-task-searchgitrepo",
 			"project": "lib.pro",
 			"lib": "libcoex-plugin-task-searchgitrepo.so",
-			"description": "Plugin search git repo in system",
+			"description": "Plugin search git repo in system"
 		},
 		{
 			"type": "app",
 			"name": "coex-searchgitrepo",
 			"project": "app.pro",
-			"description": "The Application search git repo in system",
+			"description": "The Application search git repo in system"
 		},
 		{
 			"type": "app-ui",
 			"name": "coex-searchgitrepo-ui",
 			"project": "app_ui.pro",
-			"description": "The Application search git repo in system with UI",
+			"description": "The Application search git repo in system with UI"
 		},
 	]
 }
