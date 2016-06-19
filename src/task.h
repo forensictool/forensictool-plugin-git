@@ -1,7 +1,7 @@
 #ifndef __TASK_SEARCH_GIT_REPOSITORY_H__
 #define __TASK_SEARCH_GIT_REPOSITORY_H__
 
-#include "coex/coex.h"
+#include "coex.h"
 
 #include <QCryptographicHash>
 #include <QDateTime>
@@ -23,10 +23,12 @@ class TaskSearchGitRepository : coex::ITask
 		virtual QString name();
 		virtual QString author();
 		virtual QString description();
+		virtual QString license();
+		virtual QString licenseFull();
 
 		virtual bool isSupportOS(const coex::ITypeOperationSystem *os);
-		virtual void setOption(QStringList options);
-		virtual bool execute(const coex::IConfig *config);
+		virtual bool init(const coex::IConfig *pConfig);
+		virtual bool execute();
         
 	private:
 		void writeStartAdd();
@@ -36,6 +38,7 @@ class TaskSearchGitRepository : coex::ITask
         void processGitFolder(QString medianame);
         
 		bool m_bDebug;
+		const coex::IConfig *m_pConfig;
 		QXmlStreamWriter *m_pWriter;
 };
 

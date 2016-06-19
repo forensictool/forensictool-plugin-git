@@ -36,4 +36,5 @@ results/
 app_ui.pro.user
 qrc_images.cpp
 moc_window.cpp
+moc_tablemodel_gitrepos.cpp
 .DS_Store

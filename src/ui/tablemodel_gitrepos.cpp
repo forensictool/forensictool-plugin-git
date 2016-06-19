@@ -4,8 +4,8 @@
 
 TableModelGitRepos::TableModelGitRepos()
 {
-    m_columnPath << "test1" << "test222222222";
-    m_columnUrl << "test1" << "test2222222222";
+    // m_columnPath << "test1" << "test222222222";
+    // m_columnUrl << "test1" << "test2222222222";
 }
 
 // ---------------------------------------------------------------------
@@ -78,7 +78,8 @@ void TableModelGitRepos::reloadDataFromXML(){
     QString lastStartElement = "";
     while (!xml.atEnd() && !xml.hasError())
     {
-        QXmlStreamReader::TokenType token = xml.readNext();
+        // QXmlStreamReader::TokenType token = 
+        xml.readNext();
         if (xml.isStartElement()){
             if (xml.name() == "field"){
                 QXmlStreamAttributes attributes = xml.attributes();

@@ -1,5 +1,6 @@
 #include "task.h"
 #include <QSettings>
+#include <iostream>
 
 TaskSearchGitRepository::TaskSearchGitRepository()
 {
@@ -7,36 +8,54 @@ TaskSearchGitRepository::TaskSearchGitRepository()
     m_pWriter = NULL;
 };
 
+// ---------------------------------------------------------------------
+
 QString TaskSearchGitRepository::help()
 {
     return "\t--debug - viewing debug messages";
 };
+
+// ---------------------------------------------------------------------
 
 QString TaskSearchGitRepository::name()
 {
     return "SearchGitRepository";
 };
 
+// ---------------------------------------------------------------------
+
 QString TaskSearchGitRepository::author()
 {
     return "Evgenii Sopov <mrseakg@gmail.com>";
 };
+
+// ---------------------------------------------------------------------
 
 QString TaskSearchGitRepository::description()
 {
     return "Task is search git-repository";
 };
 
+// ---------------------------------------------------------------------
+
+QString TaskSearchGitRepository::license(){
+	return "MIT License";
+}
+
+// ---------------------------------------------------------------------
+
+QString TaskSearchGitRepository::licenseFull(){
+	return "Look here: https://raw.githubusercontent.com/tusur-coex/coex-plugin-task-searchgitrepo/master/LICENSE";
+}
+
+// ---------------------------------------------------------------------
+		
 bool TaskSearchGitRepository::isSupportOS(const coex::ITypeOperationSystem *)
 {
     return true; // any os
 };
 
-void TaskSearchGitRepository::setOption(QStringList options)
-{
-    if (options.contains("--debug"))
-        m_bDebug = true;
-};
+// ---------------------------------------------------------------------
 
 void TaskSearchGitRepository::processGitFolder(QString gitfolder)
 {
@@ -72,6 +91,8 @@ void TaskSearchGitRepository::processGitFolder(QString gitfolder)
 	}
 }
 
+// ---------------------------------------------------------------------
+
 void TaskSearchGitRepository::writeField(QString sName, QString sValue)
 {
 	if(m_pWriter != NULL){
@@ -82,6 +103,8 @@ void TaskSearchGitRepository::writeField(QString sName, QString sValue)
 	}
 }
 
+// ---------------------------------------------------------------------
+
 void TaskSearchGitRepository::writeStartAdd(){
 	if(m_pWriter != NULL){
 		m_pWriter->setAutoFormatting(true);
@@ -91,6 +114,8 @@ void TaskSearchGitRepository::writeStartAdd(){
 	}
 };
 
+// ---------------------------------------------------------------------
+
 void TaskSearchGitRepository::writeEndAdd(){
 	if(m_pWriter != NULL){
 		m_pWriter->writeEndElement();
@@ -99,16 +124,26 @@ void TaskSearchGitRepository::writeEndAdd(){
 	}
 };
 
-bool TaskSearchGitRepository::execute(const coex::IConfig *config)
+// ---------------------------------------------------------------------
+
+bool TaskSearchGitRepository::init(const coex::IConfig *pConfig){
+	m_pConfig = pConfig;
+	m_bDebug = pConfig->isDebugEnabled();
+	return true;
+}
+
+// ---------------------------------------------------------------------
+
+bool TaskSearchGitRepository::execute()
 {
     if (m_bDebug) {
         qDebug() << "==========TaskSearchGitRepository::execute==========\n";
         qDebug() << " * Debug mode: On";
-        qDebug() << " * InputFolder: " << config->inputFolder();
-        qDebug() << " * OutputFolder: " << config->outputFolder() << "\n";
+        qDebug() << " * InputFolder: " << m_pConfig->inputFolder();
+        qDebug() << " * OutputFolder: " << m_pConfig->outputFolder() << "\n";
     };
-    QDir inputDir(config->inputFolder());
-    QDir outputDir(config->outputFolder());
+    QDir inputDir(m_pConfig->inputFolder());
+    QDir outputDir(m_pConfig->outputFolder());
     
     // scanDir(outputDir);
     

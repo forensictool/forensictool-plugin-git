@@ -2,9 +2,9 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include "task.h"
-#include "coex/coex.h"
-#include "coex/config.h"
-#include "coex/typeos.h"
+#include "coex.h"
+#include "coex/v0.2.2/helpers/config.h"
+#include "coex/v0.2.2/helpers/typeos.h"
 #include "ui/window.h"
 
 int main(int argc, char *argv[])

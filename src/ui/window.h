@@ -17,7 +17,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QComboBox>
-#include "../coex/coex.h"
+#include "coex.h"
 #include "tablemodel_gitrepos.h"
 
 class GitSearchRepoWindowThread;

@@ -14,8 +14,8 @@
 #include <QDir>
 #include <QHeaderView>
 #include "../task.h"
-#include "../coex/config.h"
-#include "../coex/typeos.h"
+#include "../coex/v0.2.2/helpers/config.h"
+#include "../coex/v0.2.2/helpers/typeos.h"
 
 GitSearchRepoWindow::GitSearchRepoWindow(){
     m_pTask = (coex::ITask*)(new TaskSearchGitRepository());
@@ -170,8 +170,9 @@ void GitSearchRepoWindow::btnStart() {
     pConfig->setTypeOS((coex::ITypeOperationSystem *)(new TypeOS()));
 
     QStringList args;
-    m_pTask->setOption(args);
-    m_pTask->execute(pConfig);
+    pConfig->setParameters(args);
+    m_pTask->init(pConfig);
+    m_pTask->execute();
 
     m_pTableModel_GitRepos->reloadDataFromXML();
     m_pTableModel_GitRepos->needReset();

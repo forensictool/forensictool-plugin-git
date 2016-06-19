@@ -4,6 +4,9 @@
 		"name": "Evgenii Sopov",
 		"email": "mrseakg@gmail.com"
 	},
+	"developers": [
+		"Evgenii Sopov <mrseakg@gmail.com>"
+	],
 	"build" : [
 		{
 			"type": "lib",
@@ -16,7 +19,7 @@
 			"type": "app",
 			"name": "coex-searchgitrepo",
 			"project": "app.pro",
-			"description": "The Application search git repo in system"
+			"description": "The Console Application search git repo in system"
 		},
 		{
 			"type": "app-ui",
