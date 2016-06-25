@@ -21,14 +21,8 @@ GitSearchRepoWindow::GitSearchRepoWindow(){
     m_pTask = (forensictool::ITask*)(new TaskSearchGitRepository());
 
     setWindowTitle(m_pTask->name());
-    // setMinimumSize(1000, 600);
 	setWindowIcon(QIcon(":/images/logo_70x70.png"));
     initWidgets();
-
-    // btnGenerateSignal();
-	// m_pThread = new HandSearchThread();
-	// connect(m_pThread, SIGNAL(updateKFW(QString)), SLOT(onUpdateKFW(QString)));
-                          
 }
 
 // ---------------------------------------------------------------------
