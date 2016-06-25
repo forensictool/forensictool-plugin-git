@@ -10,9 +10,8 @@
 	"build" : [
 		{
 			"type": "lib",
-			"name": "libforensictool-plugin-task-searchgitrepo",
+			"name": "libforensictool-plugin-git",
 			"project": "lib.pro",
-			"lib": "libforensictool-plugin-task-searchgitrepo.so",
 			"description": "Plugin search git repo in system"
 		},
 		{
