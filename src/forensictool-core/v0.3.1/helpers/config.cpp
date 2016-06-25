@@ -25,7 +25,7 @@ QString Config::outputFolder() const {
 
 // ---------------------------------------------------------------------
 
-const coex::ITypeOperationSystem* Config::typeOS() const {
+const forensictool::ITypeOperationSystem* Config::typeOS() const {
 	return m_pTypeOS;
 };
 
@@ -46,7 +46,7 @@ void Config::setOutputFolder(QString path) {
 
 // ---------------------------------------------------------------------
 
-void Config::setTypeOS(coex::ITypeOperationSystem* pTypeOS) {
+void Config::setTypeOS(forensictool::ITypeOperationSystem* pTypeOS) {
 	m_pTypeOS = pTypeOS;
 };
 
@@ -106,8 +106,8 @@ bool Config::isWindowsMobile() const{
 
 // ---------------------------------------------------------------------
 
-coex::IConfig* createConfig() {
-	return (coex::IConfig *) new Config();
+forensictool::IConfig* createConfig() {
+	return (forensictool::IConfig *) new Config();
 }
 
 // ---------------------------------------------------------------------

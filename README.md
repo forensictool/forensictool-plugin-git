@@ -1,9 +1,9 @@
-# coex-plugin-task-searchgitrepo
+# forensictool-plugin-git
 Plugin for search git repository in file system
 
 Requirements: Qt5
 
-## Build plugin for coex:
+## Build plugin for forensictool:
 	
 	$ ./build_lib.sh
 
@@ -13,37 +13,30 @@ Requirements: Qt5
 	
 ### run single app:
 
-	$ ./bin/coex-searchgitrepo --help
+	$ ./bin/forensictool-git --help
 
 	Task is search git-repository
 
-	  Usage: ./bin/coex-searchgitrepo [OPTIONS] 
+	  Usage: ./bin/forensictool-git [OPTIONS] 
 
 	  OPTIONS:
 
-		--input-folder <fullpath>       - required parameter
-		--output-folder <fullpath>      - required parameter
-		--help                          - this help
+		-i <fullpath>      - input folder, required parameter
+		-o <fullpath>      - output folder, required parameter
+		-h/--help          - this help
 
-	  Version: 0.1.0
-	  Author: Evgenii Sopov <mrseakg@gmail.com>
+	  Version: 0.3.0
+	  Author(s): Evgenii Sopov <mrseakg@gmail.com>
+	  License: MIT License
 
-	$ ./bin/coex-searchgitrepo --input-folder ../ --output-folder ../output
-
-
-	==========TaskSearchGitRepository::execute==========
+	$ ==========TaskSearchGitRepository::execute==========
 
 	 * Debug mode: On
 	 * InputFolder:  "../"
-	 * OutputFolder:  "../output" 
+	 * OutputFolder:  "/home/sea-kg/forensictool.output" 
 
-	/home/sea-kg/develop/tusur-coex/coex-plugin-task-searchgitrepo => git@github.com:tusur-coex/coex-plugin-task-searchgitrepo.git
-	/home/sea-kg/develop/tusur-coex/coex => git@github.com:tusur-coex/coex.git
-	/home/sea-kg/develop/tusur-coex/coex-core => git@github.com:tusur-coex/coex-core.git
-	/home/sea-kg/develop/tusur-coex/create-packages => git@github.com:tusur-coex/create-packages.git
-	/home/sea-kg/develop/tusur-coex/create-packages/build/coex-plugin-task-searchgitrepo => https://github.com/tusur-coex/coex-plugin-task-searchgitrepo.git
-	/home/sea-kg/develop/tusur-coex/create-packages/build/coex-plugin-detect-ubuntu => https://github.com/tusur-coex/coex-plugin-detect-ubuntu.git
-	/home/sea-kg/develop/tusur-coex/coex-testdata => git@github.com:tusur-coex/coex-testdata.git
-	/home/sea-kg/develop/tusur-coex/coex-plugin-detect-ubuntu => git@github.com:tusur-coex/coex-plugin-detect-ubuntu.git
+	/home/sea-kg/develop/forensictool/forensictool-plugin-git => git@github.com:forensictool/forensictool-plugin-git.git
+	/home/sea-kg/develop/forensictool/forensictool-core => git@github.com:forensictool/forensictool-core.git
+	/home/sea-kg/develop/forensictool/web => git@github.com:forensictool/web.git
 
 	==========TaskSearchGitRepository::finish==========

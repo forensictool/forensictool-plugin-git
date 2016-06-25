@@ -1,10 +1,10 @@
-#ifndef __COEX_HELPERS_TYPEOS_UBUNTU_H__
-#define __COEX_HELPERS_TYPEOS_UBUNTU_H__
+#ifndef __FORENSICTOOL_HELPERS_TYPEOS_UBUNTU_H__
+#define __FORENSICTOOL_HELPERS_TYPEOS_UBUNTU_H__
 
-#include "coex.h"
+#include "forensictool.h"
 #include <QString>
 
-class TypeOS_Ubuntu : public coex::ITypeOperationSystem {
+class TypeOS_Ubuntu : public forensictool::ITypeOperationSystem {
 	public:
 		TypeOS_Ubuntu(QString version);
 		virtual QString platform() const;
@@ -17,4 +17,4 @@ class TypeOS_Ubuntu : public coex::ITypeOperationSystem {
 		QString m_sVersion;
 };
 
-#endif //__COEX_HELPERS_TYPEOS_UBUNTU_H__
+#endif //__FORENSICTOOL_HELPERS_TYPEOS_UBUNTU_H__

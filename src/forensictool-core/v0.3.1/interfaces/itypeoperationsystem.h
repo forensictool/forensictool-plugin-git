@@ -1,9 +1,9 @@
-#ifndef __COEX_INTERFACES_ITYPEOPERATIONSYSTEM_H__
-#define __COEX_INTERFACES_ITYPEOPERATIONSYSTEM_H__
+#ifndef __FORENSICTOOL_INTERFACES_ITYPEOPERATIONSYSTEM_H__
+#define __FORENSICTOOL_INTERFACES_ITYPEOPERATIONSYSTEM_H__
 
 #include <QString>
 
-namespace coex
+namespace forensictool
 {
 	// interface of type operation system
 	class ITypeOperationSystem {
@@ -19,4 +19,4 @@ namespace coex
 };
 
 
-#endif //__COEX_INTERFACES_ITYPEOPERATIONSYSTEM_H__
+#endif //__FORENSICTOOL_INTERFACES_ITYPEOPERATIONSYSTEM_H__

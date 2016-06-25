@@ -24,9 +24,11 @@ QString TaskSearchGitRepository::name()
 
 // ---------------------------------------------------------------------
 
-QString TaskSearchGitRepository::author()
+QStringList TaskSearchGitRepository::authors()
 {
-    return "Evgenii Sopov <mrseakg@gmail.com>";
+	QStringList listAuthors;
+	listAuthors << "Evgenii Sopov <mrseakg@gmail.com>";
+    return listAuthors;
 };
 
 // ---------------------------------------------------------------------
@@ -45,12 +47,12 @@ QString TaskSearchGitRepository::license(){
 // ---------------------------------------------------------------------
 
 QString TaskSearchGitRepository::licenseFull(){
-	return "Look here: https://raw.githubusercontent.com/tusur-coex/coex-plugin-task-searchgitrepo/master/LICENSE";
+	return "Look here: http://forensictool.su/#LICENSE";
 }
 
 // ---------------------------------------------------------------------
 		
-bool TaskSearchGitRepository::isSupportOS(const coex::ITypeOperationSystem *)
+bool TaskSearchGitRepository::isSupportOS(const forensictool::ITypeOperationSystem *)
 {
     return true; // any os
 };
@@ -126,7 +128,7 @@ void TaskSearchGitRepository::writeEndAdd(){
 
 // ---------------------------------------------------------------------
 
-bool TaskSearchGitRepository::init(const coex::IConfig *pConfig){
+bool TaskSearchGitRepository::init(const forensictool::IConfig *pConfig){
 	m_pConfig = pConfig;
 	m_bDebug = pConfig->isDebugEnabled();
 	return true;

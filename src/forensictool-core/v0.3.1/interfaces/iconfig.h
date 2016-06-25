@@ -1,11 +1,11 @@
-#ifndef __COEX_INTERFACES_ICONFIG_H__
-#define __COEX_INTERFACES_ICONFIG_H__
+#ifndef __FORENSICTOOL_INTERFACES_ICONFIG_H__
+#define __FORENSICTOOL_INTERFACES_ICONFIG_H__
 
 #include "itypeoperationsystem.h"
 #include <QString>
 #include <QStringList>
 
-namespace coex
+namespace forensictool
 {
 	// interface of config
 	class IConfig {
@@ -13,10 +13,10 @@ namespace coex
 			virtual void setParameters(QStringList) = 0;
 			virtual QString inputFolder() const = 0;
 			virtual QString outputFolder() const = 0;
-			virtual const coex::ITypeOperationSystem* typeOS() const = 0;
+			virtual const forensictool::ITypeOperationSystem* typeOS() const = 0;
 			virtual void setInputFolder(QString path) = 0;
 			virtual void setOutputFolder(QString path) = 0;
-			virtual void setTypeOS(coex::ITypeOperationSystem*) = 0;
+			virtual void setTypeOS(forensictool::ITypeOperationSystem*) = 0;
 			virtual bool isDebugEnabled() const = 0;
 			virtual bool isUnknownOS() const = 0;
 			virtual bool isWindows() const = 0;
@@ -29,4 +29,4 @@ namespace coex
 	};
 }
 
-#endif // __COEX_INTERFACES_ICONFIG_H__
+#endif // __FORENSICTOOL_INTERFACES_ICONFIG_H__

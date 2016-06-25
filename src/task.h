@@ -1,7 +1,7 @@
 #ifndef __TASK_SEARCH_GIT_REPOSITORY_H__
 #define __TASK_SEARCH_GIT_REPOSITORY_H__
 
-#include "coex.h"
+#include "forensictool.h"
 
 #include <QCryptographicHash>
 #include <QDateTime>
@@ -15,19 +15,19 @@
 #include <QStringList>
 #include <QXmlStreamWriter>
 
-class TaskSearchGitRepository : coex::ITask
+class TaskSearchGitRepository : forensictool::ITask
 {
 	public:
 		TaskSearchGitRepository();
 		virtual QString help();
 		virtual QString name();
-		virtual QString author();
+		virtual QStringList authors();
 		virtual QString description();
 		virtual QString license();
 		virtual QString licenseFull();
 
-		virtual bool isSupportOS(const coex::ITypeOperationSystem *os);
-		virtual bool init(const coex::IConfig *pConfig);
+		virtual bool isSupportOS(const forensictool::ITypeOperationSystem *os);
+		virtual bool init(const forensictool::IConfig *pConfig);
 		virtual bool execute();
         
 	private:
@@ -38,13 +38,13 @@ class TaskSearchGitRepository : coex::ITask
         void processGitFolder(QString medianame);
         
 		bool m_bDebug;
-		const coex::IConfig *m_pConfig;
+		const forensictool::IConfig *m_pConfig;
 		QXmlStreamWriter *m_pWriter;
 };
 
 extern "C"
 {
-	coex::ITask* createTask();
+	forensictool::ITask* createTask();
 }
 
 #endif // __TASK_SEARCH_GIT_REPOSITORY_H__

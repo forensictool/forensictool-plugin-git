@@ -1,6 +1,6 @@
 #include "task.h"
 
-coex::ITask* createTask()
+forensictool::ITask* createTask()
 {
-    return (coex::ITask*)(new TaskSearchGitRepository());
+    return (forensictool::ITask*)(new TaskSearchGitRepository());
 }

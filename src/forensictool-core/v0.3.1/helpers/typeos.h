@@ -1,10 +1,10 @@
-#ifndef __COEX_TYPEOS_H__
-#define __COEX_TYPEOS_H__
+#ifndef __FORENSICTOOL_TYPEOS_H__
+#define __FORENSICTOOL_TYPEOS_H__
 
-#include "coex.h"
+#include "forensictool.h"
 #include <QString>
 
-class TypeOS : public coex::ITypeOperationSystem {
+class TypeOS : public forensictool::ITypeOperationSystem {
 	public:
 		virtual QString platform() const;
 		virtual void setPlatform(QString);
@@ -15,4 +15,4 @@ class TypeOS : public coex::ITypeOperationSystem {
 		virtual QString toString() const;
 };
 
-#endif // __COEX_TYPEOS_H__
+#endif // __FORENSICTOOL_TYPEOS_H__

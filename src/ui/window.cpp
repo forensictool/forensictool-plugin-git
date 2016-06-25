@@ -14,11 +14,11 @@
 #include <QDir>
 #include <QHeaderView>
 #include "../task.h"
-#include "../coex/v0.2.2/helpers/config.h"
-#include "../coex/v0.2.2/helpers/typeos.h"
+#include "../forensictool-core/v0.3.1/helpers/config.h"
+#include "../forensictool-core/v0.3.1/helpers/typeos.h"
 
 GitSearchRepoWindow::GitSearchRepoWindow(){
-    m_pTask = (coex::ITask*)(new TaskSearchGitRepository());
+    m_pTask = (forensictool::ITask*)(new TaskSearchGitRepository());
 
     setWindowTitle(m_pTask->name());
     // setMinimumSize(1000, 600);
@@ -56,7 +56,7 @@ void GitSearchRepoWindow::initWidgets(){
             QLabel *pLabelDescr = new QLabel("Description: " + m_pTask->description());
             pLayout1->addWidget(pLabelDescr);
 
-            QLabel *pLabelAuthor = new QLabel("Author: " + m_pTask->author());
+            QLabel *pLabelAuthor = new QLabel("Authors: " + m_pTask->authors().join(", "));
             pLayout1->addWidget(pLabelAuthor);
 
             QString version = QString::number(VERSION_MAJOR) + "." + QString::number(VERSION_MINOR) + "." + QString::number(VERSION_BUILD);
@@ -158,16 +158,16 @@ void GitSearchRepoWindow::btnChooseInputFolder(){
 
 void GitSearchRepoWindow::btnStart() {
 
-    QString outputDir = QDir::home().absolutePath() + "/coex.output";
+    QString outputDir = QDir::home().absolutePath() + "/forensictool.output";
     if(!QDir(outputDir).exists()){
         QDir().mkdir(outputDir);
     }
 
-    coex::IConfig *pConfig = (coex::IConfig *)(new Config());
+    forensictool::IConfig *pConfig = (forensictool::IConfig *)(new Config());
 
     pConfig->setInputFolder(m_pInputFolder->text());
     pConfig->setOutputFolder(outputDir);
-    pConfig->setTypeOS((coex::ITypeOperationSystem *)(new TypeOS()));
+    pConfig->setTypeOS((forensictool::ITypeOperationSystem *)(new TypeOS()));
 
     QStringList args;
     pConfig->setParameters(args);

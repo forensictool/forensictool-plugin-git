@@ -17,7 +17,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QComboBox>
-#include "coex.h"
+#include "forensictool.h"
 #include "tablemodel_gitrepos.h"
 
 class GitSearchRepoWindowThread;
@@ -33,7 +33,7 @@ class GitSearchRepoWindow : public QMainWindow
         QPushButton *m_pButtonStart;
 
 		GitSearchRepoWindowThread *m_pThread;
-        coex::ITask* m_pTask;
+        forensictool::ITask* m_pTask;
         TableModelGitRepos* m_pTableModel_GitRepos;
 
         void initWidgets();

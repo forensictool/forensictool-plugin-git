@@ -1,22 +1,22 @@
-#ifndef __COEX_CONFIG_H__
-#define __COEX_CONFIG_H__
+#ifndef __FORENSICTOOL_CONFIG_H__
+#define __FORENSICTOOL_CONFIG_H__
 
-#include "coex.h"
+#include "forensictool.h"
 #include <QString>
 #include <QMap>
 
-class Config : public coex::IConfig {
+class Config : public forensictool::IConfig {
 	public:
 		Config();
 		
-		// coex::IConfig
+		// forensictool::IConfig
 		virtual void setParameters(QStringList);
 		virtual QString inputFolder() const;
 		virtual QString outputFolder() const;
-		virtual const coex::ITypeOperationSystem* typeOS() const;
+		virtual const forensictool::ITypeOperationSystem* typeOS() const;
 		virtual void setInputFolder(QString path);
 		virtual void setOutputFolder(QString path);
-		virtual void setTypeOS(coex::ITypeOperationSystem* pTypeOS);
+		virtual void setTypeOS(forensictool::ITypeOperationSystem* pTypeOS);
 		virtual bool isDebugEnabled() const;
 		virtual bool isUnknownOS() const;
 		virtual bool isWindows() const;
@@ -28,12 +28,12 @@ class Config : public coex::IConfig {
 		virtual bool isWindowsMobile() const;
 
 	private:
-		coex::ITypeOperationSystem* m_pTypeOS;
+		forensictool::ITypeOperationSystem* m_pTypeOS;
 		QString m_sInputFolder;
 		QString m_sOutputFolder;
 		QStringList m_listParameters;
 };
 
-coex::IConfig* createConfig();
+forensictool::IConfig* createConfig();
 
-#endif //__COEX_CONFIG_H__
+#endif //__FORENSICTOOL_CONFIG_H__
