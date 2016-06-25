@@ -4,8 +4,8 @@
 		<field name="id">gitrepo_c0ee9eb3b28210b249dfda5cc8026980</field>
 		<field name="application">Git</field>
 		<field name="doc_type">gitrepo</field>
-		<field name="gitrepo_url">git@github.com:tusur-coex/coex.git</field>
-		<field name="gitrepo_path">/home/some/develop/tusur-coex/coex</field>
+		<field name="gitrepo_url">git@github.com:forensictool/forensictool.git</field>
+		<field name="gitrepo_path">/home/some/develop/forensictool/forensictool</field>
 		<field name="gitrepo_other">other information</field>
 	</doc>
 	<doc>
@@ -13,8 +13,8 @@
 		<field name="id">gitrepo_c0ee9eb3b28210b249dfda5cc8026981</field>
 		<field name="application">Git</field>
 		<field name="doc_type">gitrepo</field>
-		<field name="gitrepo_url">git@github.com:tusur-coex/coex-core.git</field>
-		<field name="gitrepo_fullpath">/home/some/develop/tusur-coex/coex-core</field>
+		<field name="gitrepo_url">git@github.com:forensictool/forensictool-core.git</field>
+		<field name="gitrepo_fullpath">/home/some/develop/forensictool/forensictool-core</field>
 		<field name="gitrepo_other">other information</field>
 	</doc>
 </add>

@@ -1,5 +1,5 @@
 {
-	"repository": "https://github.com/tusur-coex/coex-plugin-task-searchgitrepo.git",
+	"repository": "https://github.com/forensictool/forensictool-plugin-git.git",
 	"maintainer": {
 		"name": "Evgenii Sopov",
 		"email": "mrseakg@gmail.com"
@@ -10,20 +10,20 @@
 	"build" : [
 		{
 			"type": "lib",
-			"name": "libcoex-plugin-task-searchgitrepo",
+			"name": "libforensictool-plugin-task-searchgitrepo",
 			"project": "lib.pro",
-			"lib": "libcoex-plugin-task-searchgitrepo.so",
+			"lib": "libforensictool-plugin-task-searchgitrepo.so",
 			"description": "Plugin search git repo in system"
 		},
 		{
 			"type": "app",
-			"name": "coex-searchgitrepo",
+			"name": "forensictool-git",
 			"project": "app.pro",
 			"description": "The Console Application search git repo in system"
 		},
 		{
 			"type": "app-ui",
-			"name": "coex-searchgitrepo-ui",
+			"name": "forensictool-git-ui",
 			"project": "app_ui.pro",
 			"description": "The Application search git repo in system with UI"
 		}

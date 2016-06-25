@@ -68,7 +68,7 @@ void TableModelGitRepos::needReset() {
 void TableModelGitRepos::reloadDataFromXML(){
     m_columnPath.clear();
     m_columnUrl.clear();
-    QString outputDir = QDir::home().absolutePath() + "/coex.output";
+    QString outputDir = QDir::home().absolutePath() + "/forensictool.output";
     QFile* file = new QFile(outputDir + "/gitrepos/gitrepos.xml");
     if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
     {
